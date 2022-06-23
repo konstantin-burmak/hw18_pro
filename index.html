@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>homework17</title>
+    <style>
+        body {
+            font-size: 25px;
+        }
+        
+        div {
+            display: flex;
+            width: 500px;
+            height: 100px;
+            border: 2px solid #000;
+            margin-bottom: 20px;
+        }
+
+        .blue {
+            background-color: #0000ff;
+        }
+
+        .green {
+            background-color: #7CFC00;
+        }
+
+        .yellow {
+            background-color: #FFFF00;
+        }
+
+        table, th, td {
+            border: 1px solid;
+            text-align: center;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        //Task1
+
+        function makingCubes() {
+            const box = document.createElement('div');
+
+            function clickingCube(e) {
+                let nextColor = 'blue';
+
+                switch (e.target.style.backgroundColor) {
+                    case 'blue':
+                        nextColor = 'green';
+                        break;
+                    case 'green':
+                        nextColor = 'yellow';
+                        break;
+                    }
+
+                e.target.style.backgroundColor = nextColor;
+
+                box.append(e.target);
+                }
+
+            for (let i = 0; i < 5; i++) {
+                const line = document.createElement('div');
+                line.addEventListener('click', clickingCube);
+                box.append(line);
+            }
+
+            document.body.append(box);
+        }
+
+        makingCubes();
+
+        //Task2
+
+        function makeTable() {
+            const result = document.createElement('p');
+
+            function clickTable(e) {
+                result.innerText = e.target.innerText;
+            }
+
+            let table = document.createElement('table');
+            table.addEventListener('click', clickTable);
+
+            for (let i = 0; i < 3; i++) {
+                let row = document.createElement('tr');
+
+                for (let j = 0; j < 3; j++) {
+                    let col = document.createElement('td');
+                    col.innerText = Math.round(Math.random() * 100);
+                    row.append(col);
+                }
+                table.append(row);
+            }
+
+            document.body.append(table);
+            table.after(result);
+        }
+
+        makeTable();
+    </script>
+</body>
+</html>
