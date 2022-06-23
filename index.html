@@ -47,14 +47,11 @@
             function clickingCube(e) {
                 let nextColor = 'blue';
 
-                switch (e.target.style.backgroundColor) {
-                    case 'blue':
-                        nextColor = 'green';
-                        break;
-                    case 'green':
-                        nextColor = 'yellow';
-                        break;
-                    }
+                if (e.target.style.backgroundColor === 'blue') {
+                    nextColor = 'green';
+                } else if (e.target.style.backgroundColor === 'green') {
+                    nextColor = 'yellow';
+                }
 
                 e.target.style.backgroundColor = nextColor;
 
